@@ -1,6 +1,6 @@
 from os.path import exists
-from utils import load_json_file
-from types_constraintes import *
+from .utils import load_json_file
+from .types_constraintes import *
 
 class Checker:
     def __init__(self, template):
