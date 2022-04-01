@@ -29,7 +29,8 @@ CONSTRAINTS = {
         "value_out": lambda string, value_out: not string in value_out
     },
     "list": {
-        "min_len": lambda list_, min_len: len(list_) >= min_len,
+        "equal_len": lambda list_, len_: len(list_) == len_,
+        "min_len"  : lambda list_, min_len: len(list_) >= min_len,
 
         "min_inc": lambda list_, min: all(x >= min for x in list_),
         "min_exc": lambda list_, min: all(x >  min for x in list_),
@@ -63,7 +64,8 @@ CONSTRAINT_CHECKS = {
         "value_out": lambda value_out: all([type(value) == str for value in value_out])
     },
     "list": {
-        "min_len": lambda min: type(min) == int and min >= 0,
+        "equal_len": lambda len_: type(len_) == int and len_ > 0,
+        "min_len"  : lambda min: type(min) == int and min >= 0,
 
         "min_inc": lambda min: type(min) in [int,float],
         "min_exc": lambda min: type(min) in [int,float],
