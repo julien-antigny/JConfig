@@ -1,5 +1,5 @@
 {
-    "model parameters": {
+    "model_parameters": {
         "hidden_layers_sizes": {
             "type": "list",
             "min_len": 1,
@@ -7,24 +7,19 @@
         },
         "activation": {
             "type": "str",
-            "value_in": ["identity", "logistic", "tanh", "relu"],
-            "default": "relu"
+            "value_in": ["identity", "logistic", "tanh", "relu"]
         },
         "batch_size": {
             "type": "int",
-            "min_inc": 1,
-            "default": "auto"
+            "min_inc": 1
         }
     },
-    "training parameters": {
+    "training_parameters": {
         "max_iter": {
             "type": "int",
-            "min_inc": 1,
-            "default": 200
+            "min_inc": 1
         },
         "verbose": {
-            "type": "bool",
-            "default": false
-        }
+            "type": "bool"        }
     }
 }

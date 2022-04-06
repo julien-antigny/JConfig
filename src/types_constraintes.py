@@ -1,9 +1,13 @@
 TYPES = {"int","float","str","bool","list"}
 
-CONSTRAINTS = {
-    "int" :{
-        "is_int":    lambda x: type(x) == int,
+MATCH_TYPES = {"int": int, "float": float, "str": str, "bool": bool, "list": list}
 
+
+
+CONSTRAINTS = {
+    "is_same_type": lambda x, y: type(x) == type(y),
+
+    "int" :{
         "min_inc":   lambda integer, min: integer >= min,
         "min_exc":   lambda integer, min: integer >  min,
         "max_inc":   lambda integer, max: integer >= max,
@@ -13,8 +17,6 @@ CONSTRAINTS = {
         "value_out": lambda integer, value_out: not integer in value_out
     },
     "float": {
-        "is_float":  lambda x: type(x) == float,
-
         "min_inc":   lambda integer, min: integer >= min,
         "min_exc":   lambda integer, min: integer >  min,
         "max_inc":   lambda integer, max: integer >= max,
@@ -24,7 +26,6 @@ CONSTRAINTS = {
         "value_out": lambda float_, value_out: not float_ in value_out
     },
     "str": {
-        "is_str":    lambda x: type(x) == str,
         "value_in":  lambda string, value_in: string in value_in,
         "value_out": lambda string, value_out: not string in value_out
     },
