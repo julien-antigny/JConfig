@@ -3,9 +3,12 @@ from copy import deepcopy
 from .types_constraintes import *
 
 class Checker:
-    def __init__(self):
+    def __init__(self, template_path = None):
         self.template = None
         self.config   = None
+
+        if template_path != None:
+            self.load_template(template_path)
 
 
     def __load_json_file(self, json_file):
@@ -54,7 +57,7 @@ class Checker:
                 self.__check_template(template[key], root.copy(), error, key)
 
 
-    def check_config(self, config_path):
+    def __call__(self, config_path):
         self.config = self.__load_json_file(config_path)
 
         # Check template
@@ -80,7 +83,7 @@ class Checker:
 
             if type_ != dict:
                 # Check constraints
-                template_tmp = self.template
+                template_tmp = deepcopy(self.template)
 
                 for section in root:
                     if not section in template_tmp:
